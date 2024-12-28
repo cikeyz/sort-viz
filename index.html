@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h1>SortViz</h1>
+            <p class="subtitle">Interactive Sorting Algorithm Visualization</p>
+        </div>
+        
+        <div class="main-layout">
+            <div class="left-panel">
+                <div class="controls">
+                    <div class="input-section">
+                        <input type="text" id="numbers-input" placeholder="Enter numbers separated by spaces">
+                        <button id="enter-btn" class="btn primary">Enter</button>
+                        <button id="stop-btn" class="btn danger" disabled>Stop</button>
+                    </div>
+                    
+                    <div class="array-controls">
+                        <div class="array-size-control">
+                            <label>Array Size:</label>
+                            <div class="size-slider-container">
+                                <span>10</span>
+                                <input type="range" id="size-slider" min="10" max="100" value="30">
+                                <span>100</span>
+                            </div>
+                        </div>
+                        
+                        <div class="array-generation">
+                            <h3>Generate Array</h3>
+                            <div class="generation-buttons">
+                                <button id="random-btn" class="btn primary" title="Generate random numbers">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                        <path d="M12 22v-6"/>
+                                        <path d="M12 8V2"/>
+                                    </svg>
+                                    Random
+                                </button>
+                                <button id="nearly-sorted-btn" class="btn primary" title="Generate nearly sorted array">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 3v18h18"/>
+                                        <path d="M18 9l-6-6-6 6"/>
+                                    </svg>
+                                    Nearly Sorted
+                                </button>
+                                <button id="reverse-sorted-btn" class="btn primary" title="Generate reverse sorted array">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 3v18h18"/>
+                                        <path d="M18 15l-6 6-6-6"/>
+                                    </svg>
+                                    Reverse Sorted
+                                </button>
+                                <button id="few-unique-btn" class="btn primary" title="Generate array with few unique values">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                                    </svg>
+                                    Few Unique
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="speed-control">
+                        <label>Animation Speed:</label>
+                        <div class="speed-slider-container">
+                            <span>Slow</span>
+                            <input type="range" id="speed-slider" min="1" max="100" value="50">
+                            <span>Fast</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization-container">
+                    <button id="expand-btn" class="btn expand-btn" title="Expand Visualizer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                        </svg>
+                    </button>
+                    <canvas id="sorting-canvas"></canvas>
+                </div>
+            </div>
+
+            <div class="algorithms">
+                <div class="algorithms-content">
+                    <h2>Sorting Algorithms</h2>
+                    <div class="algorithms-grid">
+                        <div class="algorithm-item">
+                            <button id="bubble-sort" class="btn success">Bubble Sort</button>
+                            <button class="info-btn" data-algorithm="bubble" title="Learn more about Bubble Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="algorithm-item">
+                            <button id="insertion-sort" class="btn success">Insertion Sort</button>
+                            <button class="info-btn" data-algorithm="insertion" title="Learn more about Insertion Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="algorithm-item">
+                            <button id="selection-sort" class="btn success">Selection Sort</button>
+                            <button class="info-btn" data-algorithm="selection" title="Learn more about Selection Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="algorithm-item">
+                            <button id="merge-sort" class="btn success">Merge Sort</button>
+                            <button class="info-btn" data-algorithm="merge" title="Learn more about Merge Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="algorithm-item">
+                            <button id="shell-sort" class="btn success">Shell Sort</button>
+                            <button class="info-btn" data-algorithm="shell" title="Learn more about Shell Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="algorithm-item">
+                            <button id="quick-sort" class="btn success">Quick Sort</button>
+                            <button class="info-btn" data-algorithm="quick" title="Learn more about Quick Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="algorithm-item">
+                            <button id="heap-sort" class="btn success">Heap Sort</button>
+                            <button class="info-btn" data-algorithm="heap" title="Learn more about Heap Sort">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                    <path d="M12 16v-4"/>
+                                    <path d="M12 8h.01"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn" class="theme-toggle-btn">
+                        <svg class="sun-moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <span>Toggle Theme</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fullscreen-modal" class="fullscreen-modal">
+            <div class="modal-content">
+                <button id="collapse-btn" class="btn expand-btn" title="Exit Fullscreen">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                    </svg>
+                </button>
+                <canvas id="fullscreen-canvas"></canvas>
+                <div class="fullscreen-algorithms">
+                    <div class="algorithms-grid">
+                        <button id="bubble-sort-fs" class="btn success">Bubble Sort</button>
+                        <button id="insertion-sort-fs" class="btn success">Insertion Sort</button>
+                        <button id="selection-sort-fs" class="btn success">Selection Sort</button>
+                        <button id="merge-sort-fs" class="btn success">Merge Sort</button>
+                        <button id="shell-sort-fs" class="btn success">Shell Sort</button>
+                        <button id="quick-sort-fs" class="btn success">Quick Sort</button>
+                        <button id="heap-sort-fs" class="btn success">Heap Sort</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Algorithm Info Modal -->
+        <div id="algorithm-info-modal" class="algorithm-modal">
+            <div class="algorithm-modal-content">
+                <button class="close-modal-btn">×</button>
+                <h2 id="algorithm-title"></h2>
+                <div class="algorithm-info">
+                    <div class="complexity-section">
+                        <h3>Time Complexity</h3>
+                        <div class="complexity-grid">
+                            <div class="complexity-item">
+                                <span class="label">Best Case:</span>
+                                <span id="best-time" class="value"></span>
+                            </div>
+                            <div class="complexity-item">
+                                <span class="label">Average Case:</span>
+                                <span id="avg-time" class="value"></span>
+                            </div>
+                            <div class="complexity-item">
+                                <span class="label">Worst Case:</span>
+                                <span id="worst-time" class="value"></span>
+                            </div>
+                        </div>
+                        <div class="space-complexity">
+                            <span class="label">Space Complexity:</span>
+                            <span id="space-complexity" class="value"></span>
+                        </div>
+                    </div>
+                    <div class="description-section">
+                        <h3>How it Works</h3>
+                        <p id="algorithm-description"></p>
+                    </div>
+                    <div class="use-cases-section">
+                        <h3>Use Cases</h3>
+                        <ul id="use-cases-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

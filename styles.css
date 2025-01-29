@@ -5,47 +5,69 @@
 }
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #f0f2f5 0%, #e6e9f0 100%);
-    --window-gradient: linear-gradient(to bottom, #ffffff, #f8f9fa);
-    --text-color: #333;
-    --border-color: rgba(0, 102, 204, 0.2);
-    --highlight-gradient: linear-gradient(45deg, #0066cc, #00cc99);
-    --input-bg: white;
-    --canvas-bg: white;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --grid-color: rgba(255, 255, 255, 0.1);
-    --btn-text: white;
-    --slider-bg: linear-gradient(90deg, #0066cc, #00cc99);
-    --slider-thumb-bg: white;
-    --slider-thumb-border: #0066cc;
-    --speed-label-color: #0066cc;
-    --speed-text-color: #666;
+    --bg-color: #E8ECF3;
+    --frame-color: #FFFFFF;
+    --text-color: #1A202C;
+    --button-color: #6C5CE7;
+    --button-hover: #5D4ED6;
+    --accent-color: #93D7BE;
+    --border-color: #E2E8F0;
+    --shadow-color: rgba(108, 92, 231, 0.2);
+    
+    --bg-gradient: linear-gradient(135deg, var(--frame-color), var(--bg-color));
+    --window-gradient: linear-gradient(to bottom, var(--frame-color), var(--bg-color));
+    --highlight-gradient: linear-gradient(45deg, var(--button-color), var(--accent-color));
+    
+    --input-bg: var(--frame-color);
+    --canvas-bg: var(--frame-color);
+    --grid-color: rgba(108, 92, 231, 0.1);
+    --btn-text: var(--frame-color);
+    --slider-bg: linear-gradient(90deg, var(--button-color), var(--accent-color));
+    --slider-thumb-bg: var(--frame-color);
+    --slider-thumb-border: var(--button-color);
+    --speed-label-color: var(--button-color);
+    --speed-text-color: var(--text-color);
     --expand-btn-bg: rgba(255, 255, 255, 0.9);
-    --expand-btn-color: #0066cc;
+    --expand-btn-color: var(--button-color);
     --modal-overlay: rgba(0, 0, 0, 0.8);
     --white-inset: rgba(255, 255, 255, 0.5);
+
+    --shadow-main: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 6px 15px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] {
-    --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    --window-gradient: linear-gradient(to bottom, #2d2d2d, #232323);
-    --text-color: #e0e0e0;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --highlight-gradient: linear-gradient(45deg, #0074e6, #00cc99);
-    --input-bg: #1a1a1a;
-    --canvas-bg: #1a1a1a;
+    --bg-color: #0F172A;
+    --frame-color: #1E293B;
+    --text-color: #F8FAFC;
+    --button-color: #6366F1;
+    --button-hover: #4F46E5;
+    --accent-color: #475569;
+    --border-color: #334155;
     --shadow-color: rgba(0, 0, 0, 0.3);
+    
+    --bg-gradient: linear-gradient(135deg, var(--frame-color), var(--bg-color));
+    --window-gradient: linear-gradient(to bottom, var(--frame-color), var(--bg-color));
+    --highlight-gradient: linear-gradient(45deg, var(--button-color), var(--accent-color));
+    
+    --input-bg: var(--frame-color);
+    --canvas-bg: var(--frame-color);
     --grid-color: rgba(255, 255, 255, 0.05);
-    --btn-text: #e0e0e0;
-    --slider-bg: linear-gradient(90deg, #004c99, #00805c);
-    --slider-thumb-bg: #2d2d2d;
-    --slider-thumb-border: #0074e6;
-    --speed-label-color: #4d94ff;
-    --speed-text-color: #999;
+    --btn-text: var(--text-color);
+    --slider-bg: linear-gradient(90deg, var(--button-color), var(--accent-color));
+    --slider-thumb-bg: var(--frame-color);
+    --slider-thumb-border: var(--button-color);
+    --speed-label-color: var(--button-color);
+    --speed-text-color: var(--text-color);
     --expand-btn-bg: rgba(45, 45, 45, 0.9);
-    --expand-btn-color: #4d94ff;
+    --expand-btn-color: var(--button-color);
     --modal-overlay: rgba(0, 0, 0, 0.9);
     --white-inset: rgba(255, 255, 255, 0.1);
+
+    --shadow-main: 0 8px 20px var(--shadow-color);
+    --shadow-inner: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+    --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -989,4 +1011,4 @@ h1::after {
     .generation-buttons {
         grid-template-columns: 1fr;
     }
-} 
+}
